@@ -13,9 +13,9 @@ function Footer() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12 pt-20 pb-8">
         {/* Top Section */}
         <div className="grid md:grid-cols-12 gap-12 mb-16">
-          {/* Brand - Takes more space */}
+          {/* Brand */}
           <div className="md:col-span-5">
-            <div className="mb-6">
+            <div>
               <h3 className="font-display text-4xl font-bold gradient-text mb-3">
                 Pollos Mareados
               </h3>
@@ -23,74 +23,21 @@ function Footer() {
                 El Auténtico Sabor a Leña
               </p>
             </div>
-            <p className="text-white/60 leading-relaxed max-w-md mb-8">
-              Más de 15 años perfeccionando el arte de cocinar sobre fuego real. 
-              Cada pollo es una obra maestra de dedicación y sabor.
-            </p>
+          </div>
 
-            {/* Fire Icon */}
-            <div className="flex items-center gap-3 text-fire">
-              <div className="text-4xl animate-float">🔥</div>
-              <div>
-                <p className="text-xs text-white/40 uppercase tracking-wide">Cocinado con</p>
-                <p className="font-display text-lg font-bold">Pasión & Tradición</p>
+
+
+          {/* Social */}
+          <div className="md:col-span-7 flex items-center justify-end">
+            <div>
+              <h4 className="font-display text-lg font-bold text-white mb-6">
+                Conéctate
+              </h4>
+              <div className="flex gap-3">
+                <SocialLink href="#" label="Facebook" icon="facebook" />
+                <SocialLink href="#" label="Instagram" icon="instagram" />
+                <SocialLink href="#" label="WhatsApp" icon="whatsapp" />
               </div>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="md:col-span-3">
-            <h4 className="font-display text-lg font-bold text-white mb-6">
-              Navegación
-            </h4>
-            <ul className="space-y-3">
-              {[
-                { label: 'Inicio', href: '#inicio' },
-                { label: 'Nosotros', href: '#nosotros' },
-                { label: 'Menú', href: '#menu' },
-                { label: 'Contacto', href: '#contacto' },
-              ].map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="group flex items-center gap-2 text-white/70 hover:text-fire transition-colors duration-300"
-                  >
-                    <span className="w-0 h-px bg-fire transition-all duration-300 group-hover:w-4"></span>
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact & Social */}
-          <div className="md:col-span-4">
-            <h4 className="font-display text-lg font-bold text-white mb-6">
-              Conéctate
-            </h4>
-            
-            {/* Social Links */}
-            <div className="flex gap-3 mb-8">
-              <SocialLink href="#" label="Facebook" icon="facebook" />
-              <SocialLink href="#" label="Instagram" icon="instagram" />
-              <SocialLink href="#" label="WhatsApp" icon="whatsapp" />
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-3 text-sm text-white/60">
-              <p className="flex items-center gap-3">
-                <svg className="w-4 h-4 text-fire shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <span>Próximamente</span>
-              </p>
-              <p className="flex items-center gap-3">
-                <svg className="w-4 h-4 text-fire shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span>Dirección por confirmar</span>
-              </p>
             </div>
           </div>
         </div>
@@ -101,15 +48,8 @@ function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40">
-          <p>
-            © {currentYear} Pollos Mareados • Todos los derechos reservados
-          </p>
-          <p className="flex items-center gap-2">
-            Hecho con
-            <span className="text-fire animate-pulse">❤️</span>
-            y mucha leña
-          </p>
+        <div className="flex justify-center items-center text-sm text-white/40">
+          <p>© {currentYear} Pollos Mareados • Todos los derechos reservados</p>
         </div>
       </div>
     </footer>
