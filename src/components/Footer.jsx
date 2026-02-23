@@ -34,8 +34,8 @@ function Footer() {
                 Conéctate
               </h4>
               <div className="flex gap-3">
-                <SocialLink href="#" label="Facebook" icon="facebook" />
-                <SocialLink href="#" label="Instagram" icon="instagram" />
+                <SocialLink href="https://www.facebook.com/losautenticospollosmareados" label="Facebook" icon="facebook" />
+                <SocialLink href="https://www.instagram.com/pollosmareados" label="Instagram" icon="instagram" />
                 <SocialLink href="#" label="WhatsApp" icon="whatsapp" />
               </div>
             </div>
