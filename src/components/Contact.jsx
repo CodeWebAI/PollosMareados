@@ -39,8 +39,8 @@ function Contact() {
     <section id="contacto" className="relative py-24 md:py-40 bg-cream overflow-hidden">
 
       {/* Background Blobs */}
-      <div className="absolute top-16 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-16 left-0 w-[600px] h-[600px] bg-fire/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-16 right-0 w-600px h-600px bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-16 left-0 w-600px h-600px bg-fire/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-6 lg:px-12">
 
