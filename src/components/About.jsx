@@ -1,157 +1,265 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-function About() {
-  const [titleRef, titleVisible] = useScrollReveal();
-  const [contentRef, contentVisible] = useScrollReveal(0.1);
-  const [imageRef, imageVisible] = useScrollReveal(0.2);
+/* ─────────────────────────────────────────────
+   Datos de la línea del tiempo
+───────────────────────────────────────────── */
+const timelineEvents = [
+  {
+    year: '2002',
+    title: 'El inicio del sueño',
+    paragraphs: [
+      'En San Lorenzo Teotipilco comenzaba algo que jamás imaginé que crecería tanto. No empezó como una gran empresa… empezó como un sueño, como la necesidad de salir adelante y darle algo mejor a mi familia.',
+      'En aquel entonces nos llamábamos Pollos Alexa. Éramos pequeños, pero trabajábamos con el corazón grande. Con cada pollo que salía del asador llevaba esfuerzo, esperanza y muchas ganas de hacer las cosas bien.',
+    ],
+    images: ['/history/PM1.png'],
+    icon: '🔥',
+    color: 'from-amber-500 to-orange-600',
+  },
+  {
+    year: 'El Nombre',
+    title: '"Vamos con los pollos mareados"',
+    paragraphs: [
+      'Un día, la misma gente empezó a decir eso… por la forma tan particular en que asábamos el pollo a la leña.',
+      'Y sin darnos cuenta, el nombre nació del cariño de nuestros propios clientes. Desde entonces entendí que este negocio ya no era solo mío… era de todos.',
+      'Gracias al buen sabor, al trato directo, al respeto por cada persona que nos visita, fuimos creciendo. Tehuacán nos abrazó, y siempre estaremos agradecidos por ello.',
+    ],
+    images: ['/history/TM1.png'],
+    icon: '🐔',
+    color: 'from-orange-500 to-red-600',
+  },
+  {
+    year: '2015',
+    title: 'Licor de Maracuyá',
+    paragraphs: [
+      'Decidimos innovar con algo diferente: el delicioso Licor de Maracuyá. Fue todo un éxito.',
+      'Ver cómo lo aceptaban con tanto gusto nos confirmó que cuando haces las cosas con pasión, la gente lo siente.',
+    ],
+    images: ['/history/TM2.png', '/history/PM3.png'],
+    icon: '🍹',
+    color: 'from-yellow-500 to-amber-600',
+  },
+  {
+    year: '2020',
+    title: 'Sucursal Santa María Coapan',
+    paragraphs: [
+      'Ampliamos nuestra Matriz San Lorenzo y abrimos nuestra primera sucursal en Santa María Coapan.',
+      'Cada sucursal no representa solo crecimiento… representa años de esfuerzo, sacrificios, madrugadas y sueños cumplidos.',
+    ],
+    images: ['/history/TM3.png'],
+    icon: '📍',
+    color: 'from-amber-600 to-orange-700',
+  },
+  {
+    year: '2026',
+    title: 'Sucursal "Y" de Chilac',
+    paragraphs: [
+      'Estamos abriendo nuestra nueva sucursal ubicada en la "Y" de Chilac.',
+      'Mientras Dios me lo permita, seguiremos creciendo… pero sin perder nunca nuestra esencia.',
+    ],
+    images: ['/history/PM4.png', '/history/TM4.png'],
+    icon: '⭐',
+    color: 'from-amber-500 to-orange-600',
+  },
+];
+
+/* ─────────────────────────────────────────────
+   Galería de imágenes por evento
+───────────────────────────────────────────── */
+function EventImages({ images, title, icon }) {
+  if (!images || images.length === 0) return null;
+
+  if (images.length === 1) {
+    return (
+      <div className="relative overflow-hidden rounded-2xl shadow-xl group">
+        <img
+          src={images[0]}
+          alt={title}
+          className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+          style={{ filter: 'sepia(0.35) contrast(1.08) brightness(0.95)' }}
+          onError={(e) => {
+            e.target.parentElement.innerHTML = `
+              <div class="w-full h-64 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center text-white">
+                <span class="text-6xl">${icon}</span>
+              </div>
+            `;
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-amber-900/10 pointer-events-none rounded-2xl" />
+      </div>
+    );
+  }
 
   return (
-    <section id="nosotros" className="relative py-24 md:py-40 bg-sand overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-0 w-80 h-80 bg-fire/5 rounded-full blur-3xl"></div>
+    <div className="grid grid-cols-2 gap-3">
+      <div className="relative overflow-hidden rounded-2xl shadow-xl group">
+        <img
+          src={images[0]}
+          alt={`${title} 1`}
+          className="w-full h-48 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105"
+          style={{ filter: 'sepia(0.35) contrast(1.08) brightness(0.95)' }}
+          onError={(e) => { e.target.style.display = 'none'; }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-amber-900/10 pointer-events-none rounded-2xl" />
+      </div>
+      <div className="relative overflow-hidden rounded-2xl shadow-xl group self-end">
+        <img
+          src={images[1]}
+          alt={`${title} 2`}
+          className="w-full h-48 md:h-64 object-cover transition-transform duration-700 group-hover:scale-105"
+          style={{ filter: 'sepia(0.4) contrast(1.1) brightness(0.92)' }}
+          onError={(e) => { e.target.style.display = 'none'; }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-amber-900/10 pointer-events-none rounded-2xl" />
+      </div>
+    </div>
+  );
+}
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Section Header */}
+/* ─────────────────────────────────────────────
+   Item individual de la línea del tiempo
+───────────────────────────────────────────── */
+function TimelineItem({ event, index }) {
+  const [ref, isVisible] = useScrollReveal(0.15);
+  const isLeft = index % 2 === 0;
+
+  return (
+    <div className="relative">
+      {/* Punto en el hilo central (desktop) */}
+      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-8 z-20 flex-col items-center">
+        <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${event.color} text-white text-2xl flex items-center justify-center shadow-2xl border-4 border-white`}>
+          {event.icon}
+        </div>
+        <span className="mt-2 text-xs font-bold tracking-widest uppercase text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200 whitespace-nowrap">
+          {event.year}
+        </span>
+      </div>
+
+      {/* Contenido alternado */}
+      <div
+        ref={ref}
+        className={`grid md:grid-cols-2 gap-8 md:gap-16 items-center transition-all duration-700 ease-out ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-14'
+        }`}
+        style={{ transitionDelay: `${index * 80}ms` }}
+      >
+        {/* Columna izquierda */}
+        <div className={isLeft ? 'order-1' : 'order-1 md:order-2'}>
+          {isLeft ? (
+            <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-stone-100 hover:shadow-xl transition-shadow duration-300">
+              <span className="md:hidden inline-block bg-amber-100 text-amber-700 font-bold text-xs px-3 py-1 rounded-full mb-3">
+                {event.year}
+              </span>
+              <h3 className="text-xl md:text-2xl font-bold text-stone-800 mb-4 leading-snug">
+                {event.title}
+              </h3>
+              {event.paragraphs.map((p, i) => (
+                <p key={i} className="text-stone-600 leading-relaxed mb-3 last:mb-0 text-sm md:text-base">
+                  {p}
+                </p>
+              ))}
+            </div>
+          ) : (
+            <EventImages images={event.images} title={event.title} icon={event.icon} />
+          )}
+        </div>
+
+        {/* Columna derecha */}
+        <div className={isLeft ? 'order-2' : 'order-2 md:order-1'}>
+          {isLeft ? (
+            <EventImages images={event.images} title={event.title} icon={event.icon} />
+          ) : (
+            <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-stone-100 hover:shadow-xl transition-shadow duration-300">
+              <span className="md:hidden inline-block bg-amber-100 text-amber-700 font-bold text-xs px-3 py-1 rounded-full mb-3">
+                {event.year}
+              </span>
+              <h3 className="text-xl md:text-2xl font-bold text-stone-800 mb-4 leading-snug">
+                {event.title}
+              </h3>
+              {event.paragraphs.map((p, i) => (
+                <p key={i} className="text-stone-600 leading-relaxed mb-3 last:mb-0 text-sm md:text-base">
+                  {p}
+                </p>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   Componente principal
+───────────────────────────────────────────── */
+function About() {
+  const [titleRef, titleVisible] = useScrollReveal(0.2);
+  const [closingRef, closingVisible] = useScrollReveal(0.2);
+
+  return (
+    <section id="nosotros" className="relative py-20 md:py-36 bg-stone-50 overflow-hidden">
+      {/* Fondos decorativos */}
+      <div className="absolute top-20 right-0 w-96 h-96 bg-amber-400/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-20 left-0 w-80 h-80 bg-orange-400/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* ── Encabezado ── */}
         <div
           ref={titleRef}
-          className={`mb-20 transition-all duration-1000 ${
-            titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          className={`text-center mb-20 transition-all duration-700 ${
+            titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="flex items-center gap-4 mb-6">
-            <div className="h-px w-16 bg-fire"></div>
-            <span className="section-label">Nuestra Historia</span>
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-px w-12 bg-amber-400" />
+            <span className="text-xs font-semibold tracking-widest uppercase text-amber-600">
+              Nuestra Historia
+            </span>
+            <div className="h-px w-12 bg-amber-400" />
           </div>
-          <h2 className="section-heading text-5xl md:text-6xl lg:text-7xl max-w-3xl">
-            El sabor que nos{' '}
-            <span className="gradient-text italic">hace volar</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-stone-900 leading-tight">
+            Desde el corazón de{' '}
+            <span className="gradient-text italic pr-2 pb-1 inline-block">quien comenzó este sueño</span>
           </h2>
+          <p className="mt-4 text-stone-500 text-base md:text-lg max-w-xl mx-auto">
+            Una historia de fuego lento, madera seleccionada y el amor por la tradición
+            que nos define.
+          </p>
         </div>
 
-        {/* Asymmetric Grid Layout */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Text Content - Larger Column */}
-          <div
-            ref={contentRef}
-            className={`lg:col-span-7 space-y-8 transition-all duration-1000 delay-200 ${
-              contentVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-            }`}
-          >
-            {/* Main Story */}
-            <div className="space-y-6">
-              <p className="text-xl md:text-2xl text-smoke/80 leading-relaxed font-light">
-                En <span className="font-display font-semibold text-smoke">Pollos Mareados</span>,
-                cada pollo cuenta una historia. Una historia de fuego lento, madera seleccionada
-                y el amor por la tradición que nos define.
-              </p>
-              
-              <p className="text-lg text-stone leading-relaxed">
-                Desde hace más de una década, hemos perfeccionado el arte de cocinar a la leña,
-                creando una experiencia única que deleita los sentidos y conquista paladares.
-                No es solo un pollo, es el resultado de horas de dedicación y pasión por lo auténtico.
-              </p>
+        {/* ── Línea del tiempo ── */}
+        <div className="relative">
+          {/* Hilo vertical central (solo desktop) */}
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-200 via-amber-400 to-amber-200 z-0" />
 
-              <p className="text-lg text-stone leading-relaxed">
-                Cada pieza se marina con nuestra receta secreta, se cocina lentamente sobre brasas
-                de leña natural y se sirve con el orgullo de quien sabe que está ofreciendo lo mejor.
-              </p>
-            </div>
-
-            {/* Features Grid */}
-            <div className="grid sm:grid-cols-2 gap-6 pt-8">
-              <div className="group bg-white/60 backdrop-blur-sm p-8 rounded-2xl hover:bg-white transition-all duration-300 hover:shadow-lg">
-                <div className="w-14 h-14 bg-fire/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-fire group-hover:scale-110 transition-all duration-300">
-                  <span className="text-3xl">🔥</span>
-                </div>
-                <h3 className="font-display text-xl font-bold text-smoke mb-2">Fuego Real</h3>
-                <p className="text-stone text-sm leading-relaxed">
-                  Cocinado 100% sobre brasas de leña natural, sin atajos ni artificios.
-                </p>
-              </div>
-
-              <div className="group bg-white/60 backdrop-blur-sm p-8 rounded-2xl hover:bg-white transition-all duration-300 hover:shadow-lg">
-                <div className="w-14 h-14 bg-wood/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-wood group-hover:scale-110 transition-all duration-300">
-                  <span className="text-3xl">🌲</span>
-                </div>
-                <h3 className="font-display text-xl font-bold text-smoke mb-2">Leña Selecta</h3>
-                <p className="text-stone text-sm leading-relaxed">
-                  Utilizamos solo las mejores maderas para un sabor ahumado inigualable.
-                </p>
-              </div>
-
-              <div className="group bg-white/60 backdrop-blur-sm p-8 rounded-2xl hover:bg-white transition-all duration-300 hover:shadow-lg">
-                <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
-                  <span className="text-3xl">⏱️</span>
-                </div>
-                <h3 className="font-display text-xl font-bold text-smoke mb-2">Cocción Lenta</h3>
-                <p className="text-stone text-sm leading-relaxed">
-                  Paciencia y dedicación en cada pieza para la textura perfecta.
-                </p>
-              </div>
-
-              <div className="group bg-white/60 backdrop-blur-sm p-8 rounded-2xl hover:bg-white transition-all duration-300 hover:shadow-lg">
-                <div className="w-14 h-14 bg-fire/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-fire group-hover:scale-110 transition-all duration-300">
-                  <span className="text-3xl">❤️</span>
-                </div>
-                <h3 className="font-display text-xl font-bold text-smoke mb-2">Con Amor</h3>
-                <p className="text-stone text-sm leading-relaxed">
-                  Cada detalle cuidado con la pasión que nos caracteriza.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Image Column - Smaller, Offset */}
-          <div
-            ref={imageRef}
-            className={`lg:col-span-5 transition-all duration-1000 delay-400 ${
-              imageVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
-            }`}
-          >
-            <div className="sticky top-32">
-              <div className="relative">
-                {/* Main Image */}
-                <div className="relative aspect-3/4 rounded-3xl overflow-hidden shadow-2xl">
-                  <img 
-                    src="/about-image.jpg" 
-                    alt="Pollos Mareados - Tradición" 
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.target.parentElement.innerHTML = `
-                        <div class="absolute inset-0 bg-linear-to-br from-fire via-wood to-fire-dark flex items-center justify-center">
-                          <div class="text-center p-8">
-                            <div class="text-7xl mb-6">🔥</div>
-                            <p class="font-display text-3xl font-bold text-white mb-2">Tradición</p>
-                            <p class="text-white/60 text-sm">El arte del fuego</p>
-                          </div>
-                        </div>
-                      `;
-                    }}
-                  />
-                  {/* Overlay Pattern */}
-                  <div className="absolute inset-0 bg-linear-to-t from-smoke/40 via-transparent to-transparent"></div>
-                </div>
-
-                {/* Floating Badge */}
-                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6 max-w-50">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 bg-gold/20 rounded-lg flex items-center justify-center">
-                      <span className="text-2xl">⭐</span>
-                    </div>
-                    <div>
-                      <div className="font-display text-3xl font-bold text-smoke">15+</div>
-                      <div className="text-xs text-stone tracking-wider uppercase">Años</div>
-                    </div>
-                  </div>
-                  <p className="text-sm text-stone/70 leading-snug">
-                    De tradición y excelencia
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="flex flex-col gap-20 md:gap-28">
+            {timelineEvents.map((event, index) => (
+              <TimelineItem key={index} event={event} index={index} />
+            ))}
           </div>
         </div>
+
+        {/* ── Cierre emotivo ── */}
+        <div
+          ref={closingRef}
+          className={`mt-24 transition-all duration-700 ${
+            closingVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="relative bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-3xl p-8 md:p-12 max-w-2xl mx-auto text-center overflow-hidden">
+            <div className="absolute -top-8 -right-8 text-8xl opacity-10 select-none pointer-events-none">🐔</div>
+            <div className="absolute -bottom-8 -left-8 text-8xl opacity-10 select-none pointer-events-none">🔥</div>
+            <p className="text-stone-600 leading-relaxed text-base md:text-lg mb-4">
+              Gracias por confiar en nosotros.
+              <br />
+              Gracias por ser parte de esta historia.
+            </p>
+            <p className="text-amber-700 font-bold text-lg md:text-xl">
+              — Con cariño, La familia de Pollos Mareados 💛🐔🔥
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
   );
