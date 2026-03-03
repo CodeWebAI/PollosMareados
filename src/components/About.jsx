@@ -122,68 +122,68 @@ function TimelineItem({ event, index }) {
   const [ref, isVisible] = useScrollReveal(0.15);
   const isLeft = index % 2 === 0;
 
+  const TextCard = () => (
+    <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-stone-100 hover:shadow-xl transition-shadow duration-300">
+      <h3 className="text-xl md:text-2xl font-bold text-stone-800 mb-4 leading-snug">
+        {event.title}
+      </h3>
+      {event.paragraphs.map((p, i) => (
+        <p key={i} className="text-stone-600 leading-relaxed mb-3 last:mb-0 text-sm md:text-base">
+          {p}
+        </p>
+      ))}
+    </div>
+  );
+
   return (
-    <div className="relative">
-      {/* Punto en el hilo central (desktop) */}
-      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-8 z-20 flex-col items-center">
-        <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${event.color} text-white text-2xl flex items-center justify-center shadow-2xl border-4 border-white`}>
-          {event.icon}
+    <div
+      ref={ref}
+      className={`relative transition-all duration-700 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-14'
+      }`}
+      style={{ transitionDelay: `${index * 80}ms` }}
+    >
+
+      {/* ── MOBILE: línea del tiempo izquierda ── */}
+      <div className="md:hidden pl-14">
+        {/* Punto + año en la izquierda */}
+        <div className="absolute left-0 top-0 z-10 flex flex-col items-center">
+          <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${event.color} text-white text-base flex items-center justify-center shadow-lg border-2 border-white`}>
+            {event.icon}
+          </div>
+          <span className="mt-1 text-center text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-1.5 font-bold whitespace-nowrap" style={{ fontSize: '9px' }}>
+            {event.year}
+          </span>
         </div>
-        <span className="mt-2 text-xs font-bold tracking-widest uppercase text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200 whitespace-nowrap">
-          {event.year}
-        </span>
+        {/* Contenido: texto + imagen apilados */}
+        <div className="flex flex-col gap-4">
+          <TextCard />
+          <EventImages images={event.images} title={event.title} icon={event.icon} />
+        </div>
       </div>
 
-      {/* Contenido alternado */}
-      <div
-        ref={ref}
-        className={`grid md:grid-cols-2 gap-8 md:gap-16 items-center transition-all duration-700 ease-out ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-14'
-        }`}
-        style={{ transitionDelay: `${index * 80}ms` }}
-      >
-        {/* Columna izquierda */}
-        <div className={isLeft ? 'order-1' : 'order-1 md:order-2'}>
-          {isLeft ? (
-            <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-stone-100 hover:shadow-xl transition-shadow duration-300">
-              <span className="md:hidden inline-block bg-amber-100 text-amber-700 font-bold text-xs px-3 py-1 rounded-full mb-3">
-                {event.year}
-              </span>
-              <h3 className="text-xl md:text-2xl font-bold text-stone-800 mb-4 leading-snug">
-                {event.title}
-              </h3>
-              {event.paragraphs.map((p, i) => (
-                <p key={i} className="text-stone-600 leading-relaxed mb-3 last:mb-0 text-sm md:text-base">
-                  {p}
-                </p>
-              ))}
-            </div>
-          ) : (
-            <EventImages images={event.images} title={event.title} icon={event.icon} />
-          )}
+      {/* ── DESKTOP: línea del tiempo central alternada ── */}
+      <div className="hidden md:block">
+        {/* Punto central */}
+        <div className="absolute left-1/2 -translate-x-1/2 top-8 z-20 flex flex-col items-center">
+          <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${event.color} text-white text-2xl flex items-center justify-center shadow-2xl border-4 border-white`}>
+            {event.icon}
+          </div>
+          <span className="mt-2 text-xs font-bold tracking-widest uppercase text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200 whitespace-nowrap">
+            {event.year}
+          </span>
         </div>
-
-        {/* Columna derecha */}
-        <div className={isLeft ? 'order-2' : 'order-2 md:order-1'}>
-          {isLeft ? (
-            <EventImages images={event.images} title={event.title} icon={event.icon} />
-          ) : (
-            <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-stone-100 hover:shadow-xl transition-shadow duration-300">
-              <span className="md:hidden inline-block bg-amber-100 text-amber-700 font-bold text-xs px-3 py-1 rounded-full mb-3">
-                {event.year}
-              </span>
-              <h3 className="text-xl md:text-2xl font-bold text-stone-800 mb-4 leading-snug">
-                {event.title}
-              </h3>
-              {event.paragraphs.map((p, i) => (
-                <p key={i} className="text-stone-600 leading-relaxed mb-3 last:mb-0 text-sm md:text-base">
-                  {p}
-                </p>
-              ))}
-            </div>
-          )}
+        {/* Grid alternado */}
+        <div className="grid grid-cols-2 gap-16 items-center">
+          <div className={isLeft ? 'order-1' : 'order-2'}>
+            {isLeft ? <TextCard /> : <EventImages images={event.images} title={event.title} icon={event.icon} />}
+          </div>
+          <div className={isLeft ? 'order-2' : 'order-1'}>
+            {isLeft ? <EventImages images={event.images} title={event.title} icon={event.icon} /> : <TextCard />}
+          </div>
         </div>
       </div>
+
     </div>
   );
 }
@@ -229,7 +229,9 @@ function About() {
 
         {/* ── Línea del tiempo ── */}
         <div className="relative">
-          {/* Hilo vertical central (solo desktop) */}
+          {/* Hilo vertical izquierda (mobile) */}
+          <div className="md:hidden absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-200 via-amber-400 to-amber-200 z-0" />
+          {/* Hilo vertical central (desktop) */}
           <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-200 via-amber-400 to-amber-200 z-0" />
 
           <div className="flex flex-col gap-20 md:gap-28">
