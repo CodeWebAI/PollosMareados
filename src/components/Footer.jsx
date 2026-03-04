@@ -12,28 +12,38 @@ function Footer() {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12 pt-20 pb-8">
         {/* Top Section */}
-        <div className="grid md:grid-cols-12 gap-12 mb-16">
+        <div className="grid md:grid-cols-12 gap-8 mb-16 items-center">
           {/* Brand */}
-          <div className="md:col-span-5">
+          <div className="md:col-span-4 text-center md:text-left">
             <div>
-              <h3 className="font-display text-4xl font-bold gradient-text mb-3">
+              <h3 className="font-display text-3xl font-bold gradient-text mb-2">
                 Pollos Mareados
               </h3>
-              <p className="text-gold/80 text-sm font-semibold tracking-widest uppercase">
+              <p className="text-gold/80 text-xs font-semibold tracking-widest uppercase">
                 El Auténtico Sabor a Leña
               </p>
             </div>
           </div>
 
-
+          {/* Logo - Center */}
+          <div className="md:col-span-4 flex justify-center py-6 md:py-0">
+            <div className="relative w-32 h-32 md:w-40 md:h-40 group">
+              <div className="absolute inset-0 bg-fire/20 rounded-full blur-xl group-hover:bg-fire/40 transition-all duration-500"></div>
+              <img 
+                src="/PollosLogoPNG.png" 
+                alt="Pollos Mareados Logo" 
+                className="relative w-full h-full object-contain drop-shadow-2xl transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+              />
+            </div>
+          </div>
 
           {/* Social */}
-          <div className="md:col-span-7 flex items-center justify-end">
-            <div>
-              <h4 className="font-display text-lg font-bold text-white mb-6">
+          <div className="md:col-span-4 flex items-center justify-center md:justify-end">
+            <div className="text-center md:text-right">
+              <h4 className="font-display text-lg font-bold text-white mb-4">
                 Conéctate
               </h4>
-              <div className="flex gap-3">
+              <div className="flex gap-3 justify-center md:justify-end">
                 <SocialLink href="https://www.facebook.com/losautenticospollosmareados" label="Facebook" icon="facebook" />
                 <SocialLink href="https://www.instagram.com/pollosmareados" label="Instagram" icon="instagram" />
                 <SocialLink href="#" label="WhatsApp" icon="whatsapp" />
