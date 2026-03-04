@@ -4,9 +4,30 @@ import { useState, useEffect } from 'react';
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('inicio');
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 30);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30);
+
+      // Detectar sección activa
+      const sections = ['inicio', 'nosotros', 'menu', 'contacto'];
+      let currentSection = 'inicio';
+
+      for (let sectionId of sections) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            currentSection = sectionId;
+            break;
+          }
+        }
+      }
+
+      setActiveSection(currentSection);
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -59,29 +80,38 @@ function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-12">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={`relative text-sm font-medium tracking-wide transition-all duration-300 group ${isScrolled
-                  ? 'text-stone hover:text-fire'
-                  : 'text-white/90 hover:text-gold'
-                  }`}
-              >
-                {link.label}
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-fire' : 'bg-gold'
-                  }`}></span>
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.slice(1);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 group ${
+                    isScrolled
+                      ? 'text-stone group-hover:text-fire'
+                      : 'text-white/90 group-hover:text-fire'
+                  } ${isActive ? 'text-fire' : ''}`}
+                >
+                  {link.label}
+                  <span
+                    className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 bg-fire ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                  />
+                </a>
+              );
+            })}
 
             <a
               href="tel:+520000000000"
-              className={`relative px-8 py-3 rounded-full font-medium text-sm overflow-hidden group transition-all duration-300 ${isScrolled
-                ? 'bg-fire text-white hover:bg-fire-dark'
-                : 'bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white hover:text-fire'
-                }`}
+              className={`relative text-sm font-medium tracking-wide transition-all duration-300 group ${
+                isScrolled
+                  ? 'text-stone group-hover:text-fire'
+                  : 'text-white/90 group-hover:text-fire'
+              }`}
             >
-              <span className="relative z-10">Reservar</span>
+              Reservar
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-fire transition-all duration-300 group-hover:w-full"></span>
             </a>
           </div>
 
@@ -117,24 +147,37 @@ function Header() {
           }`}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8 px-6">
-          {navLinks.map((link, i) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={handleNavClick}
-              className={`text-4xl font-display font-bold text-white hover:text-gold transition-all duration-300 ${isMobileMenuOpen
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-8'
+          {navLinks.map((link, i) => {
+            const isActive = activeSection === link.href.slice(1);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={handleNavClick}
+                className={`relative text-4xl font-display font-bold transition-all duration-300 ${
+                  isActive
+                    ? 'text-fire'
+                    : 'text-white hover:text-fire'
+                } ${
+                  isMobileMenuOpen
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-8'
                 }`}
-              style={{ transitionDelay: isMobileMenuOpen ? `${i * 80 + 150}ms` : '0ms' }}
-            >
-              {link.label}
-            </a>
-          ))}
+                style={{ transitionDelay: isMobileMenuOpen ? `${i * 80 + 150}ms` : '0ms' }}
+              >
+                {link.label}
+                <span
+                  className={`absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 bg-fire transition-all duration-300 ${
+                    isActive ? 'w-full' : 'w-0'
+                  }`}
+                />
+              </a>
+            );
+          })}
           <a
             href="tel:+520000000000"
             onClick={handleNavClick}
-            className={`mt-6 px-10 py-4 bg-fire text-white text-lg font-medium rounded-full hover:bg-fire-light transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            className={`mt-6 px-10 py-4 bg-fire text-white text-lg font-medium hover:bg-fire-dark transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               }`}
             style={{ transitionDelay: isMobileMenuOpen ? '450ms' : '0ms' }}
           >

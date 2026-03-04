@@ -1,11 +1,28 @@
 import { useEffect, useState } from 'react';
+import imgFondo1 from '../img/ImagenesdFondo/PM.jpg';
+import imgFondo2 from '../img/ImagenesdFondo/PolloMFebrero.jpeg';
+import imgFondo3 from '../img/ImagenesdFondo/PolloMMarzo.jpeg';
 
 function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const backgroundImages = [
+    imgFondo1,
+    imgFondo2,
+    imgFondo3,
+  ];
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 200);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % backgroundImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -13,20 +30,26 @@ function Hero() {
       id="inicio"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Hero Background Image */}
+      {/* Hero Background Image Carousel */}
       <div className="absolute inset-0">
-        <img 
-          src="/hero-background.jpg" 
-          alt="Pollos Mareados" 
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            e.target.style.display = 'none';
-            e.target.parentElement.style.background = 'linear-gradient(135deg, #2C2C2C 0%, #1A1A1A 50%, #2C2C2C 100%)';
-          }}
-        />
+        {backgroundImages.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Pollos Mareados ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ${
+              currentImage === index ? 'opacity-100' : 'opacity-0'
+            }`}
+            onError={(e) => {
+              e.target.style.display = 'none';
+            }}
+          />
+        ))}
+        {/* Fallback gradient if images don't load */}
+        <div className="absolute inset-0 bg-gradient-to-br from-smoke to-smoke-dark"></div>
         {/* Overlay Gradients */}
-        <div className="absolute inset-0 bg-linear-to-br from-smoke/90 via-smoke/70 to-smoke/90"></div>
-        <div className="absolute inset-0 bg-linear-to-t from-smoke via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-smoke/90 via-smoke/70 to-smoke/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-smoke via-transparent to-transparent"></div>
       </div>
 
       {/* Animated Fire Particles */}
@@ -46,11 +69,11 @@ function Hero() {
             }`}
           >
             <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="h-px w-12 bg-linear-to-r from-transparent to-gold"></div>
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold"></div>
               <span className="text-gold text-sm font-medium tracking-[0.2em] uppercase">
                 Los Auténticos
               </span>
-              <div className="h-px w-12 bg-linear-to-l from-transparent to-gold"></div>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold"></div>
             </div>
           </div>
 
@@ -139,7 +162,7 @@ function Hero() {
       >
         <div className="flex flex-col items-center gap-3 animate-float">
           <span className="text-white/40 text-xs tracking-widest uppercase">Scroll</span>
-          <div className="w-px h-12 bg-linear-to-b from-white/40 to-transparent"></div>
+          <div className="w-px h-12 bg-gradient-to-b from-white/40 to-transparent"></div>
         </div>
       </div>
     </section>
