@@ -5,7 +5,7 @@ const branches = [
   {
     id: 'san-lorenzo',
     badge: 'Sucursal 1',
-    name: 'San Lorenzo',
+    name: 'Matriz San Lorenzo',
     address: 'Federal Pte. 439',
     neighborhood: 'San Lorenzo Teotipilco',
     city: '75855 Tehuacán, Pue.',
@@ -28,6 +28,19 @@ const branches = [
       'https://www.google.com/maps/search/?api=1&query=Huajuapan+Tehuacan+10+Santa+Maria+Coapan+Tehuacan+Puebla',
     color: 'gold',
   },
+  {
+    id: 'chilac',
+    badge: 'Sucursal 3',
+    name: 'Sucursal de Chilac',
+    address: 'Huajuapan - Tehuacán 10',
+    neighborhood: 'Santa María Coapan',
+    city: '75857 Tehuacán, Pue.',
+    schedule: '9:30 – 19:30',
+    whatsapp: 522381879853, // Próximamente
+    mapUrl:
+      'https://www.google.com/maps/search/?api=1&query=Huajuapan+Tehuacan+10+Santa+Maria+Coapan+Tehuacan+Puebla',
+    color: 'gold',
+  }
 ];
 
 // ── Component ────────────────────────────────────────────────────────────────
@@ -134,7 +147,7 @@ function BranchRow({ branch, index, visible, reversed }) {
 
       {/* Address */}
       <div className="flex items-start gap-3 mb-8">
-        <div className={`mt-1 flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${colors.pill}`}>
+        <div className={`mt-1 shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${colors.pill}`}>
           <LocationIcon />
         </div>
         <div>
@@ -172,7 +185,7 @@ function BranchRow({ branch, index, visible, reversed }) {
           </p>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${colors.dot}`} />
+              <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${colors.dot}`} />
               <span className="text-smoke font-medium text-sm">Lunes a Domingo</span>
             </div>
             <span className={`font-display font-bold text-lg tabular-nums ${colors.accent}`}>
@@ -221,7 +234,7 @@ function BranchRow({ branch, index, visible, reversed }) {
   );
 }
 
-// ── SVG Icons ─────────────────────────────────────────────────────────────────
+// ── SVG Icons ─────
 function LocationIcon() {
   return (
     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

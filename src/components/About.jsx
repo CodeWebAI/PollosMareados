@@ -78,13 +78,13 @@ function EventImages({ images, title, icon }) {
           style={{ filter: 'sepia(0.35) contrast(1.08) brightness(0.95)' }}
           onError={(e) => {
             e.target.parentElement.innerHTML = `
-              <div class="w-full h-64 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center text-white">
+              <div class="w-full h-64 rounded-2xl bg-linear-to-br from-amber-400 to-orange-600 flex items-center justify-center text-white">
                 <span class="text-6xl">${icon}</span>
               </div>
             `;
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-amber-900/10 pointer-events-none rounded-2xl" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-amber-900/10 pointer-events-none rounded-2xl" />
       </div>
     );
   }
@@ -99,7 +99,7 @@ function EventImages({ images, title, icon }) {
           style={{ filter: 'sepia(0.35) contrast(1.08) brightness(0.95)' }}
           onError={(e) => { e.target.style.display = 'none'; }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-amber-900/10 pointer-events-none rounded-2xl" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/25 via-transparent to-amber-900/10 pointer-events-none rounded-2xl" />
       </div>
       <div className="relative overflow-hidden rounded-2xl shadow-xl group self-end">
         <img
@@ -109,7 +109,7 @@ function EventImages({ images, title, icon }) {
           style={{ filter: 'sepia(0.4) contrast(1.1) brightness(0.92)' }}
           onError={(e) => { e.target.style.display = 'none'; }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-amber-900/10 pointer-events-none rounded-2xl" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/25 via-transparent to-amber-900/10 pointer-events-none rounded-2xl" />
       </div>
     </div>
   );
@@ -148,7 +148,7 @@ function TimelineItem({ event, index }) {
       <div className="md:hidden pl-14">
         {/* Punto + año en la izquierda */}
         <div className="absolute left-0 top-0 z-10 flex flex-col items-center">
-          <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${event.color} text-white text-base flex items-center justify-center shadow-lg border-2 border-white`}>
+          <div className={`w-10 h-10 rounded-full bg-linear-to-br ${event.color} text-white text-base flex items-center justify-center shadow-lg border-2 border-white`}>
             {event.icon}
           </div>
           <span className="mt-1 text-center text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-1.5 font-bold whitespace-nowrap" style={{ fontSize: '9px' }}>
@@ -166,7 +166,7 @@ function TimelineItem({ event, index }) {
       <div className="hidden md:block">
         {/* Punto central */}
         <div className="absolute left-1/2 -translate-x-1/2 top-8 z-20 flex flex-col items-center">
-          <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${event.color} text-white text-2xl flex items-center justify-center shadow-2xl border-4 border-white`}>
+          <div className={`w-16 h-16 rounded-full bg-linear-to-br ${event.color} text-white text-2xl flex items-center justify-center shadow-2xl border-4 border-white`}>
             {event.icon}
           </div>
           <span className="mt-2 text-xs font-bold tracking-widest uppercase text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200 whitespace-nowrap">
@@ -230,9 +230,9 @@ function About() {
         {/* ── Línea del tiempo ── */}
         <div className="relative">
           {/* Hilo vertical izquierda (mobile) */}
-          <div className="md:hidden absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-200 via-amber-400 to-amber-200 z-0" />
+          <div className="md:hidden absolute left-5 top-0 bottom-0 w-0.5 bg-linear-to-b from-amber-200 via-amber-400 to-amber-200 z-0" />
           {/* Hilo vertical central (desktop) */}
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-200 via-amber-400 to-amber-200 z-0" />
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-amber-200 via-amber-400 to-amber-200 z-0" />
 
           <div className="flex flex-col gap-20 md:gap-28">
             {timelineEvents.map((event, index) => (
@@ -248,7 +248,7 @@ function About() {
             closingVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="relative bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-3xl p-8 md:p-12 max-w-2xl mx-auto text-center overflow-hidden">
+          <div className="relative bg-linear-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-3xl p-8 md:p-12 max-w-2xl mx-auto text-center overflow-hidden">
             <div className="absolute -top-8 -right-8 text-8xl opacity-10 select-none pointer-events-none">🐔</div>
             <div className="absolute -bottom-8 -left-8 text-8xl opacity-10 select-none pointer-events-none">🔥</div>
             <p className="text-stone-600 leading-relaxed text-base md:text-lg mb-4">

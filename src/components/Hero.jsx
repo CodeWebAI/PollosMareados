@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import imgFondo1 from '../img/ImagenesdFondo/PM.jpg';
-import imgFondo2 from '../img/ImagenesdFondo/PolloMFebrero.jpeg';
-import imgFondo3 from '../img/ImagenesdFondo/PolloMMarzo.jpeg';
+//import imgFondo2 from '../img/ImagenesdFondo/PolloMFebrero.jpeg';
+//import imgFondo3 from '../img/ImagenesdFondo/PolloMMarzo.jpeg';
+import imgFondo4 from '../img/ImagenesdFondo/portada-web-p-m.jpg.jpeg';
 
 function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -9,8 +10,9 @@ function Hero() {
 
   const backgroundImages = [
     imgFondo1,
-    imgFondo2,
-    imgFondo3,
+    //imgFondo2,
+    //imgFondo3,
+    imgFondo4,
   ];
 
   useEffect(() => {
@@ -31,25 +33,27 @@ function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Hero Background Image Carousel */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0">
         {backgroundImages.map((image, index) => (
-          <img
+          <div
             key={index}
-            src={image}
-            alt={`Pollos Mareados ${index + 1}`}
-            className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ${
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
               currentImage === index ? 'opacity-100' : 'opacity-0'
             }`}
-            onError={(e) => {
-              e.target.style.display = 'none';
-            }}
-          />
+          >
+            <img
+              src={image}
+              alt={`Pollos Mareados ${index + 1}`}
+              className="w-full h-full object-cover object-center"
+              onError={(e) => {
+                e.target.style.display = 'none';
+              }}
+            />
+            {/* Gradient Overlay for better text readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+          </div>
         ))}
-        {/* Fallback gradient if images don't load */}
-        <div className="absolute inset-0 bg-gradient-to-br from-smoke to-smoke-dark"></div>
-        {/* Overlay Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-br from-smoke/90 via-smoke/70 to-smoke/90"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-smoke via-transparent to-transparent"></div>
       </div>
 
       {/* Animated Fire Particles */}
