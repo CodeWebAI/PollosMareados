@@ -212,7 +212,7 @@ function Header() {
               Reservar por Sucursal
             </h3>
             <a
-              href="https://api.whatsapp.com/send?phone=522384084770&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20San%20Lorenzo"
+              href="https://api.whatsapp.com/send?phone=522371002226&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20San%20Lorenzo"
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleNavClick}
@@ -222,7 +222,7 @@ function Header() {
               <span>📍 San Lorenzo</span>
             </a>
             <a
-              href="https://api.whatsapp.com/send?phone=522383827599&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20Coapan"
+              href="https://api.whatsapp.com/send?phone=522381879853&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20Coapan"
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleNavClick}
