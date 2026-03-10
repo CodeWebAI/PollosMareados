@@ -28,14 +28,14 @@ export const branches = [
   {
     id: 'chilac',
     badge: 'Sucursal 3',
-    name: 'Sucursal de Chilac',
-    address: 'Huajuapan - Tehuacán 10',
-    neighborhood: 'Santa María Coapan',
-    city: '75857 Tehuacán, Pue.',
+    name: ' de Chilac',
+    address: 'Libramiento',
+    neighborhood: 'Col. Guadalupe',
+    city: '75859, Santa Cruz Acapan, Pue.',
     schedule: '9:30 – 19:30',
-    whatsapp: 522381879853,
+    phones: ['52 238 165 4339', '52 238 165 4340'],
     mapUrl:
-      'https://www.google.com/maps/search/?api=1&query=Huajuapan+Tehuacan+10+Santa+Maria+Coapan+Tehuacan+Puebla',
-    color: 'gold',
+      'https://maps.app.goo.gl/zyA6vjF6amvPRVNJ9',
+    color: 'fire',
   },
 ];

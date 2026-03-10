@@ -88,7 +88,7 @@ export default function BranchRow({ branch, index, visible, reversed }) {
 
         <div>
           <p className="text-xs font-bold uppercase tracking-widest text-stone mb-3">
-            WhatsApp
+            {branch.whatsapp ? 'WhatsApp' : branch.phones ? 'Líneas Telefónicas' : branch.phone ? 'Llamada' : 'Contacto'}
           </p>
           {branch.whatsapp ? (
             <a
@@ -99,7 +99,30 @@ export default function BranchRow({ branch, index, visible, reversed }) {
                 hover:underline underline-offset-2 transition-all ${colors.accent}`}
             >
               <WhatsAppIcon />
-              <span>{branch.whatsapp}</span>
+              <span>{String(branch.whatsapp).replace(/\D/g, '').slice(-10).replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3')}</span>
+            </a>
+          ) : branch.phones ? (
+            <div className="flex flex-col gap-3">
+              {branch.phones.map((phone, idx) => (
+                <a
+                  key={idx}
+                  href={`tel:+${String(phone).replace(/\D/g, '')}`}
+                  className={`flex items-center gap-2 font-display font-bold text-lg group
+                    hover:underline underline-offset-2 transition-all ${colors.accent}`}
+                >
+                  <PhoneIcon />
+                  <span>{String(phone).replace(/\D/g, '').slice(-10).replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3')}</span>
+                </a>
+              ))}
+            </div>
+          ) : branch.phone ? (
+            <a
+              href={`tel:+${String(branch.phone).replace(/\D/g, '')}`}
+              className={`flex items-center gap-2 font-display font-bold text-lg group
+                hover:underline underline-offset-2 transition-all ${colors.accent}`}
+            >
+              <PhoneIcon />
+              <span>{String(branch.phone).replace(/\D/g, '').slice(-10).replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3')}</span>
             </a>
           ) : (
             <div className="flex items-center gap-2">
@@ -144,6 +167,14 @@ function ArrowRightIcon({ className }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
+  );
+}
+
+function PhoneIcon({ className }) {
+  return (
+    <svg className={className ?? 'w-5 h-5'} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
     </svg>
   );
 }
