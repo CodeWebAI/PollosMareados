@@ -79,24 +79,23 @@ function Header() {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className={`hidden lg:flex items-center gap-8 transition-all duration-300 ${isScrolled ? '' : '[text-shadow:0_2px_10px_rgba(0,0,0,0.8),_0_0_4px_rgba(0,0,0,0.9)] drop-shadow-md'
+            }`}>
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 group ${
-                    isScrolled
-                      ? 'text-stone group-hover:text-fire'
-                      : 'text-white/90 group-hover:text-fire'
-                  } ${isActive ? 'text-fire' : ''}`}
+                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 group ${isScrolled
+                    ? 'text-stone group-hover:text-fire'
+                    : 'text-white hover:text-white/80'
+                    } ${isActive ? (isScrolled ? 'text-fire' : 'text-white font-bold') : ''}`}
                 >
                   {link.label}
                   <span
-                    className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 bg-fire ${
-                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                    }`}
+                    className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 ${isScrolled ? 'bg-fire' : 'bg-white shadow-[0_2px_4px_rgba(0,0,0,0.5)]'} ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
                   />
                 </a>
               );
@@ -105,23 +104,22 @@ function Header() {
             {/* Sucursales Dropdown (Desktop) */}
             <div className="relative group">
               <button
-                className={`relative text-sm font-medium tracking-wide transition-all duration-300 flex items-center gap-1 ${
-                  isScrolled
-                    ? 'text-stone group-hover:text-fire'
-                    : 'text-white/90 group-hover:text-fire'
-                }`}
+                className={`relative text-sm font-medium tracking-wide transition-all duration-300 flex items-center gap-1 ${isScrolled
+                  ? 'text-stone group-hover:text-fire'
+                  : 'text-white hover:text-white/80'
+                  }`}
               >
                 Reservar
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-fire transition-all duration-300 group-hover:w-full"></span>
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-fire' : 'bg-white shadow-[0_2px_4px_rgba(0,0,0,0.5)]'}`}></span>
               </button>
 
               {/* Menú Desplegable */}
               <div className="absolute right-0 mt-4 w-48 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden">
                 <a
-                  href="https://api.whatsapp.com/send?phone=522384084770&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20San%20Lorenzo"
+                  href="https://api.whatsapp.com/send?phone=522371002226&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20San%20Lorenzo"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block px-4 py-3 text-sm text-gray-700 hover:bg-fire hover:text-white transition-colors"
@@ -129,7 +127,7 @@ function Header() {
                   📍 San Lorenzo
                 </a>
                 <a
-                  href="https://api.whatsapp.com/send?phone=522383827599&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20Coapan"
+                  href="https://api.whatsapp.com/send?phone=522381879853&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20Coapan"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block px-4 py-3 text-sm text-gray-700 hover:bg-fire hover:text-white transition-colors"
@@ -137,12 +135,16 @@ function Header() {
                   📍 Coapan
                 </a>
                 <a
-                  href="https://api.whatsapp.com/send?phone=522382103554&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20Chilac"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="tel:+522381654339"
+                  className="block px-4 py-3 text-sm text-gray-700 hover:bg-fire hover:text-white transition-colors border-b border-gray-50"
+                >
+                  📍 Chilac (Línea 1)
+                </a>
+                <a
+                  href="tel:+522381654340"
                   className="block px-4 py-3 text-sm text-gray-700 hover:bg-fire hover:text-white transition-colors"
                 >
-                  📍 Chilac
+                  📍 Chilac (Línea 2)
                 </a>
               </div>
             </div>
@@ -187,22 +189,19 @@ function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={handleNavClick}
-                className={`relative text-4xl font-display font-bold transition-all duration-300 ${
-                  isActive
-                    ? 'text-fire'
-                    : 'text-white hover:text-fire'
-                } ${
-                  isMobileMenuOpen
+                className={`relative text-4xl font-display font-bold transition-all duration-300 ${isActive
+                  ? 'text-fire'
+                  : 'text-white hover:text-fire'
+                  } ${isMobileMenuOpen
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-8'
-                }`}
+                  }`}
                 style={{ transitionDelay: isMobileMenuOpen ? `${i * 80 + 150}ms` : '0ms' }}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 bg-fire transition-all duration-300 ${
-                    isActive ? 'w-full' : 'w-0'
-                  }`}
+                  className={`absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 bg-fire transition-all duration-300 ${isActive ? 'w-full' : 'w-0'
+                    }`}
                 />
               </a>
             );
@@ -212,7 +211,7 @@ function Header() {
               Reservar por Sucursal
             </h3>
             <a
-              href="https://api.whatsapp.com/send?phone=522384084770&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20San%20Lorenzo"
+              href="https://api.whatsapp.com/send?phone=522371002226&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20San%20Lorenzo"
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleNavClick}
@@ -222,7 +221,7 @@ function Header() {
               <span>📍 San Lorenzo</span>
             </a>
             <a
-              href="https://api.whatsapp.com/send?phone=522383827599&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20Coapan"
+              href="https://api.whatsapp.com/send?phone=522381879853&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20Coapan"
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleNavClick}
@@ -232,14 +231,20 @@ function Header() {
               <span>📍 Coapan</span>
             </a>
             <a
-              href="https://api.whatsapp.com/send?phone=522382103554&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20Chilac"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="tel:+522381654339"
               onClick={handleNavClick}
               className={`flex items-center justify-center gap-2 px-8 py-3 bg-white/10 text-white border border-white/20 rounded-full hover:bg-fire hover:border-fire transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: isMobileMenuOpen ? '550ms' : '0ms' }}
             >
-              <span>📍 Chilac</span>
+              <span>📍 Chilac (Línea 1)</span>
+            </a>
+            <a
+              href="tel:+522381654340"
+              onClick={handleNavClick}
+              className={`flex items-center justify-center gap-2 px-8 py-3 bg-white/10 text-white border border-white/20 rounded-full hover:bg-fire hover:border-fire transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              style={{ transitionDelay: isMobileMenuOpen ? '600ms' : '0ms' }}
+            >
+              <span>📍 Chilac (Línea 2)</span>
             </a>
           </div>
         </div>
