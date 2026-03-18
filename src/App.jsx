@@ -4,6 +4,7 @@ import About from './components/About'
 import Menu from './components/Menu'
 import Experience from './components/Experience'
 import Contact from './components/Contact'
+import MembershipTerms from './components/MembershipTerms'
 import Footer from './components/Footer'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Menu />
         <Experience />
         <Contact />
+        <MembershipTerms />
       </main>
 
       <Footer />

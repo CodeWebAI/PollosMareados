@@ -6,6 +6,7 @@ import BranchRow from './contact/BranchRow';
 function Contact() {
   const [titleRef, titleVisible] = useScrollReveal();
   const [branchesRef, branchesVisible] = useScrollReveal(0.06);
+  const [ctaRef, ctaVisible] = useScrollReveal(0.12);
 
   return (
     <section id="contacto" className="relative py-24 md:py-40 bg-cream overflow-hidden">
@@ -61,8 +62,49 @@ function Contact() {
           ))}
         </div>
 
+        <div
+          ref={ctaRef}
+          className={`mt-14 md:mt-18 transition-all duration-1000 ${
+            ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="relative overflow-hidden rounded-3xl border border-fire/20 bg-white p-8 md:p-10 shadow-soft">
+            <div className="absolute -top-20 -right-16 h-56 w-56 rounded-full bg-fire/10 blur-3xl" />
+            <div className="absolute -bottom-20 -left-16 h-56 w-56 rounded-full bg-gold/10 blur-3xl" />
+
+            <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div>
+                <p className="section-label mb-2">Apertura Sucursal Y de Chilac</p>
+                <h3 className="font-display text-3xl md:text-4xl font-bold text-smoke leading-tight">
+                  Conoce la membresia de lanzamiento
+                </h3>
+                <p className="mt-3 max-w-2xl text-stone">
+                  Revisa terminos y condiciones, beneficios, mecanica del concurso y reglas de participacion.
+                </p>
+              </div>
+
+              <a
+                href="#membresia-terminos"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-fire px-7 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-fire-dark hover:shadow-fire"
+                aria-label="Ver terminos y condiciones de membresia"
+              >
+                Ver terminos y bases
+                <ArrowRightIcon className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
+  );
+}
+
+function ArrowRightIcon({ className }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
   );
 }
 

@@ -11,7 +11,7 @@ function Header() {
       setIsScrolled(window.scrollY > 30);
 
       // Detectar sección activa
-      const sections = ['inicio', 'nosotros', 'menu', 'contacto'];
+      const sections = ['inicio', 'nosotros', 'menu', 'contacto', 'membresia-terminos'];
       let currentSection = 'inicio';
 
       for (let sectionId of sections) {
@@ -29,6 +29,7 @@ function Header() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -46,18 +47,21 @@ function Header() {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { label: 'Inicio', href: '#inicio' },
-    { label: 'Historia', href: '#nosotros' },
-    { label: 'Menú', href: '#menu' },
-    { label: 'Contacto', href: '#contacto' },
+    { label: 'Inicio', href: '#inicio', sectionId: 'inicio' },
+    { label: 'Historia', href: '#nosotros', sectionId: 'nosotros' },
+    { label: 'Menú', href: '#menu', sectionId: 'menu' },
+    { label: 'Contacto', href: '#contacto', sectionId: 'contacto' },
+    { label: 'Membresía', href: '#membresia-terminos', sectionId: 'membresia-terminos' },
   ];
+
+  const navThemeSolid = isScrolled;
 
   const handleNavClick = () => setIsMobileMenuOpen(false);
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navThemeSolid
           ? 'bg-white/98 backdrop-blur-xl shadow-lg py-4'
           : 'bg-transparent py-6'
           }`}
@@ -73,28 +77,29 @@ function Header() {
             <img
               src="/PollosLogoPNG.png"
               alt="Pollos Mareados"
-              className={`h-16 lg:h-20 w-auto object-contain transition-all duration-500 drop-shadow-lg ${isScrolled ? 'brightness-100' : 'brightness-110'
+              className={`h-16 lg:h-20 w-auto object-contain transition-all duration-500 drop-shadow-lg ${navThemeSolid ? 'brightness-100' : 'brightness-110'
                 }`}
             />
           </a>
 
           {/* Desktop Navigation */}
-          <div className={`hidden lg:flex items-center gap-8 transition-all duration-300 ${isScrolled ? '' : '[text-shadow:0_2px_10px_rgba(0,0,0,0.8),_0_0_4px_rgba(0,0,0,0.9)] drop-shadow-md'
+          <div className={`hidden lg:flex items-center gap-8 transition-all duration-300 ${navThemeSolid ? '' : '[text-shadow:0_2px_10px_rgba(0,0,0,0.8),0_0_4px_rgba(0,0,0,0.9)] drop-shadow-md'
             }`}>
             {navLinks.map((link) => {
-              const isActive = activeSection === link.href.slice(1);
+              const isActive = activeSection === link.sectionId;
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 group ${isScrolled
+                  onClick={handleNavClick}
+                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 group ${navThemeSolid
                     ? 'text-stone group-hover:text-fire'
                     : 'text-white hover:text-white/80'
                     } ${isActive ? (isScrolled ? 'text-fire' : 'text-white font-bold') : ''}`}
                 >
                   {link.label}
                   <span
-                    className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 ${isScrolled ? 'bg-fire' : 'bg-white shadow-[0_2px_4px_rgba(0,0,0,0.5)]'} ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 ${navThemeSolid ? 'bg-fire' : 'bg-white shadow-[0_2px_4px_rgba(0,0,0,0.5)]'} ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
                       }`}
                   />
                 </a>
@@ -104,7 +109,7 @@ function Header() {
             {/* Sucursales Dropdown (Desktop) */}
             <div className="relative group">
               <button
-                className={`relative text-sm font-medium tracking-wide transition-all duration-300 flex items-center gap-1 ${isScrolled
+                className={`relative text-sm font-medium tracking-wide transition-all duration-300 flex items-center gap-1 ${navThemeSolid
                   ? 'text-stone group-hover:text-fire'
                   : 'text-white hover:text-white/80'
                   }`}
@@ -113,7 +118,7 @@ function Header() {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-fire' : 'bg-white shadow-[0_2px_4px_rgba(0,0,0,0.5)]'}`}></span>
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${navThemeSolid ? 'bg-fire' : 'bg-white shadow-[0_2px_4px_rgba(0,0,0,0.5)]'}`}></span>
               </button>
 
               {/* Menú Desplegable */}
@@ -138,13 +143,7 @@ function Header() {
                   href="tel:+522381654339"
                   className="block px-4 py-3 text-sm text-gray-700 hover:bg-fire hover:text-white transition-colors border-b border-gray-50"
                 >
-                  📍 Chilac (Línea 1)
-                </a>
-                <a
-                  href="tel:+522381654340"
-                  className="block px-4 py-3 text-sm text-gray-700 hover:bg-fire hover:text-white transition-colors"
-                >
-                  📍 Chilac (Línea 2)
+                  📍Y de Chilac (Línea 1)
                 </a>
               </div>
             </div>
@@ -159,15 +158,15 @@ function Header() {
             <div className="w-6 h-5 flex flex-col justify-between">
               <span
                 className={`block h-0.5 w-full transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
-                  } ${isScrolled ? 'bg-smoke' : 'bg-white'}`}
+                  } ${navThemeSolid ? 'bg-smoke' : 'bg-white'}`}
               />
               <span
                 className={`block h-0.5 w-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
-                  } ${isScrolled ? 'bg-smoke' : 'bg-white'}`}
+                  } ${navThemeSolid ? 'bg-smoke' : 'bg-white'}`}
               />
               <span
                 className={`block h-0.5 w-full transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-                  } ${isScrolled ? 'bg-smoke' : 'bg-white'}`}
+                  } ${navThemeSolid ? 'bg-smoke' : 'bg-white'}`}
               />
             </div>
           </button>
@@ -181,15 +180,15 @@ function Header() {
           : 'opacity-0 pointer-events-none'
           }`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-8 px-6">
+        <div className="flex min-h-full flex-col items-center justify-center gap-8 overflow-y-auto px-6 py-24">
           {navLinks.map((link, i) => {
-            const isActive = activeSection === link.href.slice(1);
+            const isActive = activeSection === link.sectionId;
             return (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={handleNavClick}
-                className={`relative text-4xl font-display font-bold transition-all duration-300 ${isActive
+                className={`relative text-3xl sm:text-4xl font-display font-bold transition-all duration-300 ${isActive
                   ? 'text-fire'
                   : 'text-white hover:text-fire'
                   } ${isMobileMenuOpen
