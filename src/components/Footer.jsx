@@ -22,7 +22,7 @@ function Footer() {
                 Pollos Mareados
               </h3>
               <p className="text-gold/80 text-xs font-semibold tracking-widest uppercase">
-                El Auténtico Sabor a Leña
+                LOS AUTÉNTICOS POLLOS A LA LEÑA
               </p>
             </div>
           </div>

@@ -32,7 +32,13 @@ export default function BranchRow({ branch, index, visible, reversed }) {
       </span>
 
       <h3 className="font-display text-4xl md:text-5xl font-bold text-smoke mb-6 leading-tight">
-        Sucursal <span className="italic">{branch.name}</span>
+        {branch.id === 'san-lorenzo' ? (
+          <span className="italic">{branch.name}</span>
+        ) : (
+          <>
+            Sucursal <span className="italic">{branch.name}</span>
+          </>
+        )}
       </h3>
 
       <div className="flex items-start gap-3 mb-8">

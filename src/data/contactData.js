@@ -1,12 +1,12 @@
 export const branches = [
   {
     id: 'san-lorenzo',
-    badge: 'Sucursal 1',
+    badge: 'Matriz',
     name: 'Matriz San Lorenzo',
     address: 'Federal Pte. 439',
     neighborhood: 'San Lorenzo Teotipilco',
     city: '75855 Tehuacán, Pue.',
-    schedule: '10:30 – 19:00',
+    schedule: '10:30 – 19:30',
     whatsapp: 522371002226,
     mapUrl:
       'https://www.google.com/maps/search/?api=1&query=Federal+Pte.+439+San+Lorenzo+Teotipilco+Tehuacan+Puebla',
@@ -14,7 +14,7 @@ export const branches = [
   },
   {
     id: 'coapan',
-    badge: 'Sucursal 2',
+    badge: 'Sucursal 1',
     name: 'Coapan',
     address: 'Huajuapan - Tehuacán 10',
     neighborhood: 'Santa María Coapan',
@@ -27,8 +27,8 @@ export const branches = [
   },
   {
     id: 'chilac',
-    badge: 'Sucursal 3',
-    name: ' de Chilac',
+    badge: 'Sucursal 2',
+    name: ' Y de Chilac',
     address: 'Libramiento',
     neighborhood: 'Col. Guadalupe',
     city: '75859, Santa Cruz Acapan, Pue.',

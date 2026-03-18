@@ -9,17 +9,12 @@ import { useState, useEffect } from 'react';
 export default function EventImages({ images, gallery, title, icon }) {
   const slides = gallery && gallery.length > 0 ? gallery : images;
   const [current, setCurrent] = useState(0);
-  const [fading, setFading] = useState(false);
 
   // Auto-avance cada 4 s solo cuando hay galería
   useEffect(() => {
     if (!gallery || gallery.length === 0) return;
     const timer = setInterval(() => {
-      setFading(true);
-      setTimeout(() => {
-        setCurrent((c) => (c + 1) % slides.length);
-        setFading(false);
-      }, 700);
+      setCurrent((c) => (c + 1) % slides.length);
     }, 4000);
     return () => clearInterval(timer);
   }, [gallery, slides.length]);
@@ -28,10 +23,7 @@ export default function EventImages({ images, gallery, title, icon }) {
 
   /* ── Carrusel ── */
   if (gallery && gallery.length > 0) {
-    const goTo = (i) => {
-      setFading(true);
-      setTimeout(() => { setCurrent(i); setFading(false); }, 700);
-    };
+    const goTo = (i) => setCurrent(i);
     const prev = () => goTo((current - 1 + slides.length) % slides.length);
     const next = () => goTo((current + 1) % slides.length);
 
@@ -45,7 +37,6 @@ export default function EventImages({ images, gallery, title, icon }) {
             className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
             style={{
               filter: 'sepia(0.35) contrast(1.08) brightness(0.95)',
-              opacity: fading ? 0 : 1,
             }}
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent pointer-events-none rounded-2xl" />

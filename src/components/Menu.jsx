@@ -64,7 +64,7 @@ SectionHeader.displayName = 'SectionHeader';
 
 const CategoryTabs = ({ categories, currentCategory, onCategoryChange }) => {
   return (
-    <div className="flex flex-wrap justify-center gap-2 mb-12 px-4 sticky top-70px z-30 py-4 bg-white/95 backdrop-blur-sm shadow-sm md:static md:bg-transparent md:shadow-none md:py-0">
+    <div className="flex flex-wrap justify-center gap-2 mb-12 px-4 sticky top-24 z-30 py-4 bg-white/95 backdrop-blur-sm shadow-sm md:static md:bg-transparent md:shadow-none md:py-0">
       {categories.map((cat) => (
         <button
           key={cat.id}
