@@ -140,11 +140,17 @@ function Header() {
                   📍 Coapan
                 </a>
                 <a
-                  href="tel:+522381654339"
+                  href="https://api.whatsapp.com/send?phone=522381654339&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20Coapan"
                   className="block px-4 py-3 text-sm text-gray-700 hover:bg-fire hover:text-white transition-colors border-b border-gray-50"
                 >
-                  📍Y de Chilac (Línea 1)
+                  📍 Y Chilac
                 </a>
+                {/*<a
+                  href="tel:+522381654340"
+                  className="block px-4 py-3 text-sm text-gray-700 hover:bg-fire hover:text-white transition-colors"
+                >
+                  📍 Chilac (Línea 2)
+                </a>*/}
               </div>
             </div>
           </div>
@@ -230,21 +236,21 @@ function Header() {
               <span>📍 Coapan</span>
             </a>
             <a
-              href="tel:+522381654339"
+              href="https://api.whatsapp.com/send?phone=522381654339&text=Hola%20Pollos%20Mareados,%20quiero%20hacer%20una%20reserva%20en%20Coapan"
               onClick={handleNavClick}
               className={`flex items-center justify-center gap-2 px-8 py-3 bg-white/10 text-white border border-white/20 rounded-full hover:bg-fire hover:border-fire transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: isMobileMenuOpen ? '550ms' : '0ms' }}
             >
-              <span>📍 Chilac (Línea 1)</span>
+              <span>📍 Chilac</span>
             </a>
-            <a
+            {/*<a
               href="tel:+522381654340"
               onClick={handleNavClick}
               className={`flex items-center justify-center gap-2 px-8 py-3 bg-white/10 text-white border border-white/20 rounded-full hover:bg-fire hover:border-fire transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: isMobileMenuOpen ? '600ms' : '0ms' }}
             >
               <span>📍 Chilac (Línea 2)</span>
-            </a>
+            </a>*/}
           </div>
         </div>
       </div>
