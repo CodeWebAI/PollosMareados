@@ -1,5 +1,5 @@
 export const menuData = {
-  combos: [
+/*  combos: [
     {
       id: 'c1',
       src: '/img/combos/COMBO10.png',
@@ -63,7 +63,31 @@ export const menuData = {
       description: 'Pollo y costilla unidas por el amor al carbón.',
       category: 'combos'
     }
+  ],*/
+  combos: [
+    {
+      id: 'c1',
+      src: '/img/combos/combo-para-compartir.png',
+      title: 'Combo para Compartir',
+      description: 'La experiencia definitiva para compartir. Pollo rostizado a la perfección acompañado de todos nuestros complementos estrella.',
+      category: 'combos'
+    },
+    {
+      id: 'c2',
+      src: '/img/combos/duo-picosito.png',
+      title: 'Duo Picosito',
+      description: 'La combinación perfecta de crujiente y jugoso para compartir en pareja.',
+      category: 'combos'
+    },
+    {
+      id: 'c3',
+      src: '/img/combos/duo-picosito-combo-4.png',
+      title: 'Duo Picosito Combo 4',
+      description: 'Una combinación irresistible de crujiente y jugoso para compartir en familia.',
+      category: 'combos'
+    }
   ],
+  
   especialidades: [
     {
       id: 'p1',

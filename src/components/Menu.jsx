@@ -36,11 +36,11 @@ const MenuCard = memo(({ item }) => {
         <p className="text-sm font-body text-stone leading-relaxed mb-4 grow">
           {item.description}
         </p>
-        <div className="mt-auto pt-4 border-t border-ash/50">
+        {/*<div className="mt-auto pt-4 border-t border-ash/50">
            <button className="w-full rounded-full bg-sand px-4 py-2 text-sm font-semibold font-body text-wood-dark transition-colors hover:bg-gold hover:text-white focus:outline-none focus:ring-2 focus:ring-fire focus:ring-offset-2">
             Ver Detalle
           </button>
-        </div>
+        </div>*/}
       </div>
     </div>
   );
@@ -84,30 +84,16 @@ const CategoryTabs = ({ categories, currentCategory, onCategoryChange }) => {
 };
 
 export default function Menu() {
-  const [activeCategory, setActiveCategory] = useState('all');
+  const [activeCategory, setActiveCategory] = useState('combos');
 
   const categories = [
-    { id: 'all', label: 'Todo el Menú' },
     { id: 'combos', label: '🔥 Combos' },
     { id: 'especialidades', label: '🍗 Especialidades' },
     { id: 'antojos', label: '😋 Antojitos' },
     { id: 'extras', label: '🍟 Extras' },
   ];
 
-  /* 
-    Memoize the filtered items to avoid recalculation on every render.
-    This improves performance significantly when toggling categories.
-  */
   const filteredItems = useMemo(() => {
-    if (activeCategory === 'all') {
-      // Flatten all categories into one array for "All" view
-      return [
-        ...menuData.combos,
-        ...menuData.especialidades,
-        ...menuData.antojos,
-        ...menuData.extras
-      ];
-    }
     return menuData[activeCategory] || [];
   }, [activeCategory]);
 

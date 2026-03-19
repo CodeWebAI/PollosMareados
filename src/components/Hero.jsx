@@ -50,7 +50,7 @@ function Hero() {
               onError={(e) => { e.target.style.display = 'none'; }}
             />
             {/* Degradado solo en la parte inferior para los botones */}
-            <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/70 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-black/70 to-transparent" />
           </div>
         ))}
       </div>
