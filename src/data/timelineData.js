@@ -60,7 +60,7 @@ export const timelineEvents = [
       'Estamos abriendo nuestra nueva sucursal ubicada en la "Y" de Chilac.',
       'Mientras Dios me lo permita, seguiremos creciendo… pero sin perder nunca nuestra esencia.',
     ],
-    images: ['/history/PM4.png', '/history/TM4.png'],
+    images: ['/history/sucursal_chilac.jpg'],
     icon: '⭐',
     color: 'from-amber-500 to-orange-600',
   },

@@ -19,7 +19,7 @@ export const branches = [
     address: 'Huajuapan - Tehuacán 10',
     neighborhood: 'Santa María Coapan',
     city: '75857 Tehuacán, Pue.',
-    schedule: '9:30 – 19:30',
+    schedule: '10:30 – 19:30',
     whatsapp: 522381879853,
     mapUrl:
       'https://www.google.com/maps/search/?api=1&query=Huajuapan+Tehuacan+10+Santa+Maria+Coapan+Tehuacan+Puebla',
@@ -32,7 +32,7 @@ export const branches = [
     address: 'Libramiento',
     neighborhood: 'Col. Guadalupe',
     city: '75859, Santa Cruz Acapan, Pue.',
-    schedule: '9:30 – 19:30',
+    schedule: '10:30 – 18:30',
     phones: ['52 238 165 4339', '52 238 165 4340'],
     mapUrl:
       'https://maps.app.goo.gl/zyA6vjF6amvPRVNJ9',
