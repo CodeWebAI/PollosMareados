@@ -1,86 +1,35 @@
 export const menuData = {
-/*  combos: [
+combos: [
     {
       id: 'c1',
-      src: '/img/combos/COMBO10.png',
+      src: '/img/combos/combo_familiar.png',
       title: 'El Banquete Imperial',
       description: 'La experiencia definitiva para compartir. Pollo rostizado a la perfección acompañado de todos nuestros complementos estrella.',
       category: 'combos'
     },
     {
       id: 'c2',
-      src: '/img/combos/COMBO9.png',
+      src: '/img/combos/combo_Grill_Master.png',
       title: 'Fiesta Familiar',
       description: 'Ideal para reuniones grandes. Sabor ahumado que une a la familia en cada bocado.',
       category: 'combos'
     },
     {
       id: 'c3',
-      src: '/img/combos/COMBO8.png',
-      title: 'Dúo Dinámico',
-      description: 'La combinación perfecta de crujiente y jugoso para compartir en pareja.',
-      category: 'combos'
-    },
-    {
-      id: 'c4',
-      src: '/img/combos/COMBO7.png',
-      title: 'Pack Fin de Semana',
-      description: 'Olvídate de cocinar y disfruta del mejor sazón de la ciudad directamente en tu mesa.',
-      category: 'combos'
-    },
-    {
-      id: 'c5',
-      src: '/img/combos/COMBO6.png',
-      title: 'Clásico Mareado',
-      description: 'Nuestro combo tradicional que nunca falla. Pollo, papas y refresco.',
-      category: 'combos'
-    },
-    {
-      id: 'c6',
-      src: '/img/combos/COMBO-5.png',
-      title: 'Mix de Antojos',
-      description: 'Un poco de todo para los indecisos. Variedad y sabor en una sola orden.',
-      category: 'combos'
-    },
-    {
-      id: 'c7',
-      src: '/img/combos/COMBO-4.png',
-      title: 'Cuarteto Fantástico',
-      description: 'Cuatro piezas selectas con el dorado perfecto y piel crujiente.',
-      category: 'combos'
-    },
-    {
-      id: 'c8',
-      src: '/img/combos/COMBO-3.png',
-      title: 'Trío Sabor',
-      description: 'Tres acompañamientos que elevan el sabor de nuestro pollo a otro nivel.',
-      category: 'combos'
-    },
-    {
-      id: 'c9',
-      src: '/img/combos/COMBO-2.png',
-      title: 'Pareja Perfecta',
-      description: 'Pollo y costilla unidas por el amor al carbón.',
-      category: 'combos'
-    }
-  ],*/
-  combos: [
-    {
-      id: 'c1',
       src: '/img/combos/combo-para-compartir.png',
       title: 'Combo para Compartir',
       description: 'La experiencia definitiva para compartir. Pollo rostizado a la perfección acompañado de todos nuestros complementos estrella.',
       category: 'combos'
     },
     {
-      id: 'c2',
+      id: 'c4',
       src: '/img/combos/duo-picosito.png',
       title: 'Duo Picosito',
       description: 'La combinación perfecta de crujiente y jugoso para compartir en pareja.',
       category: 'combos'
     },
     {
-      id: 'c3',
+      id: 'c5',
       src: '/img/combos/duo-picosito-combo-4.png',
       title: 'Duo Picosito Combo 4',
       description: 'Una combinación irresistible de crujiente y jugoso para compartir en familia.',
