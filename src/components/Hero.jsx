@@ -1,21 +1,9 @@
 import { useEffect, useState } from 'react';
-import imgFondo1 from '../img/ImagenesdFondo/PM.jpg';
-//import imgFondo2 from '../img/ImagenesdFondo/PolloMFebrero.jpeg';
-//import imgFondo3 from '../img/ImagenesdFondo/PolloMMarzo.jpeg';
-import imgFondo4 from '../img/ImagenesdFondo/portada-web-p-m.jpg.jpeg';
-import Background from '../img/ImagenesdFondo/background.jpeg';
+import { backgroundHome } from '../data/backgroundHome';
 
 function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
-
-  const backgroundImages = [
-    imgFondo1,
-    //imgFondo2,
-    //imgFondo3,
-    imgFondo4,
-    Background
-  ];
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 200);
@@ -24,7 +12,7 @@ function Hero() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % backgroundImages.length);
+      setCurrentImage((prev) => (prev + 1) % backgroundHome.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -36,21 +24,23 @@ function Hero() {
     >
       {/* Hero Background Image Carousel — ocupa toda la pantalla */}
       <div className="absolute inset-0 z-0">
-        {backgroundImages.map((image, index) => (
+        {backgroundHome.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              currentImage === index ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentImage === index ? 'opacity-100' : 'opacity-0'
+              }`}
           >
             <img
-              src={image}
-              alt={`Pollos Mareados ${index + 1}`}
-              className="w-full h-full object-cover object-center"
+              src={image.src}
+              alt={image.alt}
+              className="w-full h-full object-cover object-top sm:object-center"
+              loading={index === 0 ? 'eager' : 'lazy'}
               onError={(e) => { e.target.style.display = 'none'; }}
             />
-            {/* Degradado solo en la parte inferior para los botones */}
-            <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-black/70 to-transparent" />
+            {/* Overlay más pronunciado en mobile para mejorar legibilidad */}
+            <div className="absolute inset-0 bg-black/20 sm:bg-black/0" />
+            {/* Degradado en la parte inferior para los botones */}
+            <div className="absolute inset-x-0 bottom-0 h-64 sm:h-48 bg-linear-to-t from-black/80 sm:from-black/70 to-transparent" />
           </div>
         ))}
       </div>
@@ -62,9 +52,8 @@ function Hero() {
       <div className="relative z-10 pb-10 flex flex-col items-center gap-5">
         {/* CTA Buttons */}
         <div
-          className={`flex flex-col sm:flex-row items-center justify-center gap-4 px-6 w-full max-w-md sm:max-w-none transition-all duration-1000 delay-300 ${
-            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`flex flex-col sm:flex-row items-center justify-center gap-4 px-6 w-full max-w-md sm:max-w-none transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           <a
             href="#menu"
@@ -89,18 +78,16 @@ function Hero() {
 
         {/* Carousel Dots */}
         <div
-          className={`flex gap-2 transition-all duration-1000 delay-500 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={`flex gap-2 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
         >
-          {backgroundImages.map((_, index) => (
+          {backgroundHome.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentImage(index)}
               aria-label={`Imagen ${index + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                currentImage === index ? 'w-8 bg-fire' : 'w-2 bg-white/40 hover:bg-white/70'
-              }`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${currentImage === index ? 'w-8 bg-fire' : 'w-2 bg-white/40 hover:bg-white/70'
+                }`}
             />
           ))}
         </div>

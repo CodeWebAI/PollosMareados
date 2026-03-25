@@ -49,7 +49,7 @@ export const timelineEvents = [
       'Ampliamos nuestra Matriz San Lorenzo y abrimos nuestra primera sucursal en Santa María Coapan.',
       'Cada sucursal no representa solo crecimiento… representa años de esfuerzo, sacrificios, madrugadas y sueños cumplidos.',
     ],
-    images: ['/history/SucursalCoapanP.jpeg', '/history/SucursalPCoapan.jpeg'],
+    images: ['/history/SucursalCoapanP.jpeg'],
     icon: '📍',
     color: 'from-amber-600 to-orange-700',
   },

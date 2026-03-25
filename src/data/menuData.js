@@ -1,42 +1,84 @@
 export const menuData = {
-combos: [
+  combos: [
     {
       id: 'c1',
-      src: '/img/combos/combo_familiar.png',
-      title: 'El Banquete Imperial',
-      description: 'La experiencia definitiva para compartir. Pollo rostizado a la perfección acompañado de todos nuestros complementos estrella.',
+      src: '/img/combos/COMBO-BARBI-CREMA.png',
+      title: 'COMBO BARBICREMA',
+      description: '',
       category: 'combos'
     },
     {
       id: 'c2',
-      src: '/img/combos/combo_Grill_Master.png',
-      title: 'Fiesta Familiar',
-      description: 'Ideal para reuniones grandes. Sabor ahumado que une a la familia en cada bocado.',
+      src: '/img/combos/COMBO-CLASICO.png',
+      title: 'COMBO CLASICO',
+      description: '',
       category: 'combos'
     },
     {
       id: 'c3',
-      src: '/img/combos/combo-para-compartir.png',
-      title: 'Combo para Compartir',
-      description: 'La experiencia definitiva para compartir. Pollo rostizado a la perfección acompañado de todos nuestros complementos estrella.',
+      src: '/img/combos/COMBO-CRIJIENTE.png',
+      title: 'COMBO CRIJIENTE',
+      description: '',
       category: 'combos'
     },
     {
       id: 'c4',
-      src: '/img/combos/duo-picosito.png',
-      title: 'Duo Picosito',
-      description: 'La combinación perfecta de crujiente y jugoso para compartir en pareja.',
+      src: '/img/combos/COMBO-CRUDELIA.png',
+      title: 'COMBO CRUDELIA',
+      description: '',
       category: 'combos'
     },
     {
       id: 'c5',
-      src: '/img/combos/duo-picosito-combo-4.png',
-      title: 'Duo Picosito Combo 4',
-      description: 'Una combinación irresistible de crujiente y jugoso para compartir en familia.',
+      src: '/img/combos/COMBO-DUO-PICOSITO.png',
+      title: 'COMBO DUO PICOSITO',
+      description: '',
       category: 'combos'
-    }
+    },
+    {
+      id: 'c6',
+      src: '/img/combos/combo-familiare.png',
+      title: 'COMBO FAMILIARE',
+      description: '',
+      category: 'combos'
+    },
+    {
+      id: 'c7',
+      src: '/img/combos/COMBO-GRILL-MASTER.png',
+      title: 'COMBO GRILL MASTER',
+      description: '',
+      category: 'combos'
+    },
+    {
+      id: 'c8',
+      src: '/img/combos/COMBO-JARDINERA.png',
+      title: 'COMBO JARDINERA',
+      description: '',
+      category: 'combos'
+    },
+    {
+      id: 'c9',
+      src: '/img/combos/COMBO-MAREADOS-JR.png',
+      title: 'COMBO MAREADOS JR',
+      description: '',
+      category: 'combos'
+    },
+    {
+      id: 'c10',
+      src: '/img/combos/COMBO-MESA-LLENA.png',
+      title: 'COMBO MESA LLENA',
+      description: '',
+      category: 'combos'
+    },
+    {
+      id: 'c11',
+      src: '/img/combos/COMBO-PARA-COMPARTIR.png',
+      title: 'COMBO PARA COMPARTIR',
+      description: '',
+      category: 'combos'
+    },
   ],
-  
+
   especialidades: [
     {
       id: 'p1',
