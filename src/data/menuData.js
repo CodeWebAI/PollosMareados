@@ -2,35 +2,35 @@ export const menuData = {
   combos: [
     {
       id: 'c1',
-      src: '/img/combos/COMBO-BARBI-CREMA.png',
+      src: '/img/combos/combo-barbi-crema.png',
       title: 'COMBO BARBICREMA',
       description: '',
       category: 'combos'
     },
     {
       id: 'c2',
-      src: '/img/combos/COMBO-CLASICO.png',
+      src: '/img/combos/combo-clasico.png',
       title: 'COMBO CLASICO',
       description: '',
       category: 'combos'
     },
     {
       id: 'c3',
-      src: '/img/combos/COMBO-CRIJIENTE.png',
+      src: '/img/combos/combo-crijiente.png',
       title: 'COMBO CRIJIENTE',
       description: '',
       category: 'combos'
     },
     {
       id: 'c4',
-      src: '/img/combos/COMBO-CRUDELIA.png',
+      src: '/img/combos/combo-crudelia.png',
       title: 'COMBO CRUDELIA',
       description: '',
       category: 'combos'
     },
     {
       id: 'c5',
-      src: '/img/combos/COMBO-DUO-PICOSITO.png',
+      src: '/img/combos/combo-duo-picosito.png',
       title: 'COMBO DUO PICOSITO',
       description: '',
       category: 'combos'
@@ -44,35 +44,35 @@ export const menuData = {
     },
     {
       id: 'c7',
-      src: '/img/combos/COMBO-GRILL-MASTER.png',
+      src: '/img/combos/combo-grill-master.png',
       title: 'COMBO GRILL MASTER',
       description: '',
       category: 'combos'
     },
     {
       id: 'c8',
-      src: '/img/combos/COMBO-JARDINERA.png',
+      src: '/img/combos/combo-jardinera.png',
       title: 'COMBO JARDINERA',
       description: '',
       category: 'combos'
     },
     {
       id: 'c9',
-      src: '/img/combos/COMBO-MAREADOS-JR.png',
+      src: '/img/combos/combo-mareados-jr.png',
       title: 'COMBO MAREADOS JR',
       description: '',
       category: 'combos'
     },
     {
       id: 'c10',
-      src: '/img/combos/COMBO-MESA-LLENA.png',
+      src: '/img/combos/combo-mesa-llena.png',
       title: 'COMBO MESA LLENA',
       description: '',
       category: 'combos'
     },
     {
       id: 'c11',
-      src: '/img/combos/COMBO-PARA-COMPARTIR.png',
+      src: '/img/combos/combo-para-compartir.png',
       title: 'COMBO PARA COMPARTIR',
       description: '',
       category: 'combos'
@@ -82,35 +82,35 @@ export const menuData = {
   especialidades: [
     {
       id: 'p1',
-      src: '/img/platillos/Pollo-barbacoa.png',
+      src: '/img/platillos/pollo-barbacoa.png',
       title: 'Pollo Barbacoa',
       description: 'Cocción lenta en penca de maguey, deshaciéndose en tu boca con notas ahumadas.',
       category: 'especialidades'
     },
     {
       id: 'p2',
-      src: '/img/platillos/Pollo-a-la-Crema.png',
+      src: '/img/platillos/pollo-a-la-crema.png',
       title: 'Pollo a la Crema',
       description: 'Bañado en nuestra salsa secreta cremosa con toques de chipotle y especias.',
       category: 'especialidades'
     },
     {
       id: 'p3',
-      src: '/img/platillos/Pollo-chiltepin.png',
+      src: '/img/platillos/pollo-chiltepin.png',
       title: 'Pollo Chiltepín',
       description: 'Para los valientes. Un picor elegante y adictivo que despierta todos los sentidos.',
       category: 'especialidades'
     },
     {
       id: 'p4',
-      src: '/img/platillos/Conejo-Chiltepin.png',
+      src: '/img/platillos/conejo-chiltepin.png',
       title: 'Conejo Chiltepín',
       description: 'Carne magra y tierna con el toque rústico y picante del chiltepín.',
       category: 'especialidades'
     },
     {
       id: 'p5',
-      src: '/img/platillos/Cecina-Yecapixtla.png',
+      src: '/img/platillos/cecina-yecapixtla.png',
       title: 'Cecina de Yecapixtla',
       description: 'La auténtica tradición. Carne salada artesanalmente, servida con crema y aguacate.',
       category: 'especialidades'
