@@ -12,11 +12,11 @@ const optimizeImage = (src) => src; // Placeholder for future optimization logic
 
 const MenuCard = memo(({ item }) => {
   return (
-    <div 
-      className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-fire border border-ash/50"
+    <div
+      className={`group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-fire border border-ash/50 ${item.category === 'combos' ? 'min-h-[280px]' : ''}`}
       role="article"
     >
-      <div className="relative aspect-4/3 overflow-hidden bg-cream">
+      <div className={`relative overflow-hidden bg-cream ${item.category === 'combos' ? 'flex-1' : 'aspect-4/3'}`}>
         <img
           src={optimizeImage(item.src)}
           alt={item.title}
@@ -28,20 +28,17 @@ const MenuCard = memo(({ item }) => {
         />
         <div className="absolute inset-0 bg-linear-to-t from-smoke/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
-      
-      <div className="flex flex-1 flex-col p-6">
-        <h3 className="mb-2 text-xl font-bold font-display tracking-tight text-smoke group-hover:text-fire transition-colors">
-          {item.title}
-        </h3>
-        <p className="text-sm font-body text-stone leading-relaxed mb-4 grow">
-          {item.description}
-        </p>
-        {/*<div className="mt-auto pt-4 border-t border-ash/50">
-           <button className="w-full rounded-full bg-sand px-4 py-2 text-sm font-semibold font-body text-wood-dark transition-colors hover:bg-gold hover:text-white focus:outline-none focus:ring-2 focus:ring-fire focus:ring-offset-2">
-            Ver Detalle
-          </button>
-        </div>*/}
-      </div>
+
+      {item.category !== 'combos' && (
+        <div className="flex flex-1 flex-col p-6">
+          <h3 className="mb-2 text-xl font-bold font-display tracking-tight text-smoke group-hover:text-fire transition-colors">
+            {item.title}
+          </h3>
+          <p className="text-sm font-body text-stone leading-relaxed mb-4 grow">
+            {item.description}
+          </p>
+        </div>
+      )}
     </div>
   );
 });
@@ -105,15 +102,15 @@ export default function Menu() {
       <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-fire/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <SectionHeader 
-          title="Nuestro Delicioso Menú" 
-          subtitle="Sabor que enamora" 
+        <SectionHeader
+          title="Nuestro Delicioso Menú"
+          subtitle="Sabor que enamora"
         />
 
-        <CategoryTabs 
-          categories={categories} 
-          currentCategory={activeCategory} 
-          onCategoryChange={setActiveCategory} 
+        <CategoryTabs
+          categories={categories}
+          currentCategory={activeCategory}
+          onCategoryChange={setActiveCategory}
         />
 
         {/* 
