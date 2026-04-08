@@ -21,7 +21,7 @@ const MenuCard = memo(({ item }) => {
           src={optimizeImage(item.src)}
           alt={item.title}
           loading="lazy"
-          className="h-full w-full object-contain transition-transform duration-500 will-change-transform group-hover:scale-110 p-4"
+          className="h-full w-full object-cover transition-transform duration-500 will-change-transform group-hover:scale-110"
           width="400"
           height="300"
           decoding="async"

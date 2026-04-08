@@ -16,8 +16,8 @@ export const menuData = {
     },
     {
       id: 'c3',
-      src: '/img/combos/combo-crijiente.png',
-      title: 'COMBO CRIJIENTE',
+      src: '/img/combos/combo-crujiente.png',
+      title: 'COMBO CRUJIENTE',
       description: '',
       category: 'combos'
     },
@@ -37,8 +37,8 @@ export const menuData = {
     },
     {
       id: 'c6',
-      src: '/img/combos/combo-familiare.png',
-      title: 'COMBO FAMILIARE',
+      src: '/img/combos/combo-familiar.png',
+      title: 'COMBO FAMILIAR',
       description: '',
       category: 'combos'
     },
